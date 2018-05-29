@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace CSharpLesson {
 	class Program {
+		struct gamer {
+			public string name;
+			public int favnumber;
+		}
 		static void Main(string[] args) {
 
 			string name = "Marcus";
@@ -30,7 +34,7 @@ namespace CSharpLesson {
 			for (var i = 0; i < frames.Length; i++) {
 				frames[i] = rand.Next(0, 30);
 				total += frames[i];
-			}
+			};
 			Console.WriteLine("Total using random: " + total);
 
 			///////////////////////////////////////////////////////////////////
@@ -49,7 +53,7 @@ namespace CSharpLesson {
 			total = 0;
 			foreach (int frame in frames) {
 				total += frame;
-			}
+			};
 			Console.WriteLine("Total using Greg's random and foreach: " + total);
 
 			///////////////////////////////////////////////////////////////////
@@ -57,7 +61,7 @@ namespace CSharpLesson {
 			total = 0;
 			for (var i = 0; i < frames.Length; i++) {
 				total += frames[i];
-			}
+			};
 			Console.WriteLine("Total using Greg's random and var i: " + total);
 
 			///////////////////////////////////////////////////////////////////
@@ -70,7 +74,7 @@ namespace CSharpLesson {
 
 			foreach(string aname in names) {
 				Console.WriteLine("Hi " + aname);
-			}
+			};
 
 			///////////////////////////////////////////////////////////////////
 
@@ -80,7 +84,22 @@ namespace CSharpLesson {
 
 			foreach(string x in me) {
 				Console.WriteLine(x);
-			}
+			};
+
+			///////////////////////////////////////////////////////////////////
+
+			gamer ken;
+			ken.name = "ken";
+			ken.favnumber = 27;
+			gamer nick;
+			nick.name = "nick";
+			nick.favnumber = 7;
+
+			gamer[] gamers = { ken, nick };
+			foreach(gamer gamer in gamers) {
+				Console.WriteLine("This is " + gamer.name);
+				Console.WriteLine("Gamer's name is {0}. Their favorite number is {1}.", gamer.name, gamer.favnumber);
+			};
 		}
 	}
 }
