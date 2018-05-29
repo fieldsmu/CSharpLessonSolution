@@ -7,6 +7,80 @@ using System.Threading.Tasks;
 namespace CSharpLesson {
 	class Program {
 		static void Main(string[] args) {
+
+			string name = "Marcus";
+			int numofdays = 6;
+			string days = numofdays.ToString();
+			String msg = "my name is " + name + ". I've been in bootcamp for " + days + " days!";
+			Console.WriteLine(msg);
+
+			///////////////////////////////////////////////////////////////////
+
+			double daysinyear = 365.25;
+			int yearborn = 1997;
+			int currentyear = 2018;
+			double daysalive = (currentyear - yearborn) * daysinyear;
+			Console.WriteLine("You have been alive for about " + daysalive + " days! Congrats!");
+
+			///////////////////////////////////////////////////////////////////
+
+			int[] frames = new int[10];
+			int total = 0;
+			var rand = new Random();
+			for (var i = 0; i < frames.Length; i++) {
+				frames[i] = rand.Next(0, 30);
+				total += frames[i];
+			}
+			Console.WriteLine("Total using random: " + total);
+
+			///////////////////////////////////////////////////////////////////
+
+			frames[0] = 30;
+			frames[1] = 17;
+			frames[2] = 10;
+			frames[3] = 15;
+			frames[4] = 26;
+			frames[5] = 7;
+			frames[6] = 28;
+			frames[7] = 20;
+			frames[8] = 6;
+			frames[9] = 4;
+
+			total = 0;
+			foreach (int frame in frames) {
+				total += frame;
+			}
+			Console.WriteLine("Total using Greg's random and foreach: " + total);
+
+			///////////////////////////////////////////////////////////////////
+
+			total = 0;
+			for (var i = 0; i < frames.Length; i++) {
+				total += frames[i];
+			}
+			Console.WriteLine("Total using Greg's random and var i: " + total);
+
+			///////////////////////////////////////////////////////////////////
+
+			string[] names = {
+				"greg", "michael", "dan", "anna",
+				"marcus", "foster", "jermaine",
+				"mitchell", "jonathan", "larry", "william"
+			};
+
+			foreach(string aname in names) {
+				Console.WriteLine("Hi " + aname);
+			}
+
+			///////////////////////////////////////////////////////////////////
+
+			string[] me = {
+				"Marcus", "Fields", "West Chester, OH", "fieldsmu@gmail.com"
+			};
+
+			foreach(string x in me) {
+				Console.WriteLine(x);
+			}
 		}
 	}
 }
