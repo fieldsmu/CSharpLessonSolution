@@ -10,6 +10,13 @@ namespace CSharpLesson {
 			public string name;
 			public int favnumber;
 		}
+
+
+		/// <summary>
+		/// This code does stuff
+		/// In fact, it does tons of all of the things 
+		/// </summary>
+		/// <param name="args">Command line parameters as strings</param>
 		static void Main(string[] args) {
 
 			string name = "Marcus";
@@ -82,8 +89,8 @@ namespace CSharpLesson {
 				"Marcus", "Fields", "West Chester, OH", "fieldsmu@gmail.com"
 			};
 
-			foreach(string x in me) {
-				Console.WriteLine(x);
+			foreach(string parameters in me) {
+				Console.WriteLine(parameters);
 			};
 
 			///////////////////////////////////////////////////////////////////
@@ -100,6 +107,74 @@ namespace CSharpLesson {
 				Console.WriteLine("This is " + gamer.name);
 				Console.WriteLine("Gamer's name is {0}. Their favorite number is {1}.", gamer.name, gamer.favnumber);
 			};
+
+			///////////////////////////////////////////////////////////////////
+
+			Random rnd = new Random();
+			int rnd1 = rnd.Next(0, 9);
+			int rnd2 = rnd.Next(0, 9);
+			int rnd3 = rnd.Next(0, 9);
+			int count = 0;
+			while (rnd1 != rnd2 || rnd1 != rnd3 || rnd1 == 6) {
+				rnd1 = rnd.Next(0, 9);
+				rnd2 = rnd.Next(0, 9);
+				rnd3 = rnd.Next(0, 9);
+				int[] rndarr = { rnd1, rnd2, rnd3 };
+				for (var i = 0; i < rndarr.Length; i++) {
+					Console.Write(rndarr[i] + " ");
+				}
+				count++;
+				Console.WriteLine();
+			}
+			Console.WriteLine("It took {0} attempts!", count);
+
+			////////////////////////////////////////////////////////////////////
+
+			string playagain = "yes";
+			while (playagain == "yes") {
+				int answer = rnd.Next(1, 100);
+				Console.WriteLine("To exit, enter anything that is not a number.");
+				Console.Write("Guess a number from 1 to 100: ");
+				string response = Console.ReadLine();
+				bool parsed = int.TryParse(response, out int e);
+				if (parsed) {
+					int responseint = int.Parse(response);
+					while (responseint != answer) {
+						// check if repsonse is higher or lower than answer 
+						if (responseint > answer) {
+							Console.WriteLine("WRONG. TOO HIGH. YOU SUCK. TRY AGAIN!");
+						} else if (responseint < answer) {
+							Console.WriteLine("WRONG. TOO LOW. YOU SUCK. TRY AGAIN!");
+						}
+						// prompt user to guess again and capture data 
+						Console.Write("Guess a number from 1 to 100: ");
+						response = Console.ReadLine();
+						parsed = int.TryParse(response, out int r);
+						while (!parsed) {
+							// if not an acceptable answer, prompt the user to enter again
+							Console.WriteLine("THAT IS NOT A NUMBER");
+							Console.Write("Guess a number from 1 to 100: ");
+							response = Console.ReadLine();
+							parsed = int.TryParse(response, out int y);
+						}
+						responseint = int.Parse(response);
+					}
+					Console.WriteLine("CONGRATS! YOU GOT IT RIGHT!");
+				}
+				Console.WriteLine("Would you like to play again? Enter 'yes' if you would.");
+				playagain = Console.ReadLine();
+			}
+
+			///////////////////////////////////////////////////////////////////////////////
+
+			int idx = 0;
+			while (idx < 1000) {
+				if(idx % 2 == 0 && idx % 3 == 0 && idx % 7 == 0) {
+					Console.WriteLine("The index {0} is div by 2, 3, and 7.", idx);
+				}
+				idx++;
+			}
+
 		}
 	}
 }
